@@ -15,20 +15,31 @@
 </head>
 <body>
     <main>
-        <section  class="container">
-            <div class="container-input-card" id="container">
-                <div class="container-input" id="container-inputs">
-                    <input data-stock type="search" class="barra-de-pesquisa border-transparent w-48" id="pesquisa" placeholder="Digite aqui o ativo">
-                    <button><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>   
+        <section>
+            <div class="container" id="container">
+                <div class="container-input">
+                    <input type="search" class="barra-de-pesquisa" id="pesquisa" placeholder="Digite aqui o codigo do ativo">
+                    <label for="pesquisa"><i class="fa fa-search lupa" aria-hidden="true"></i></label>
                 </div>
-                <div class="image-not-found"></div>
-                <!-- <div data-card-acao>
-                     <div class="container-card-acao">
-                        <img src="" alt="" class="acao-logo">
-                        <h1 class="acao"></h1>
-                        <p class="nome-acao"></p>
-                    </div>
-                </div> -->
+                <div class="display-none image-not-found" id="image-not-found"></div>
+                <div class="display-none" id="container-stock">
+                    <!-- <div class="container-card">
+                        <div>
+                            <img src="" alt="" class="acao-logo">
+                        </div>
+                        <div class="card-text">
+                            <p>
+
+                            </p>
+                            <p>
+
+                            </p>
+                            <p class="preco-acao">
+
+                            </p>
+                        </div>
+                    </div> -->
+                </div>
             </div>
         </section>
     </main>

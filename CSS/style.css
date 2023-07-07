@@ -1,17 +1,23 @@
 *{
     font-family: 'poppins', sans-serif;
 }
-
-.container{
+section
+{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
+    height: auto;
+    width: 100%;
     background-color:#DDD5EA;
+
+    padding: 2rem 10%;
+
+    min-height: 100vh;
 }
-.container-input-card{
-    width: 50%;
+.container
+{
+    
+    width: 100%;
     height: auto;
     display: flex;
     flex-wrap: wrap;
@@ -26,6 +32,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid #590BD8;
     border-radius: 30px;
     padding: 1rem;
@@ -37,6 +44,7 @@
     border-radius: 30px 30px 0 0 ;
 }
 .barra-de-pesquisa{
+    width: 80%;
     font-size: 1.5rem;
     outline: none;
     background-color: #590BD8;
@@ -46,11 +54,29 @@
     font-size: 1.5rem;
     color: #f0f0f0;
 }
-button i
+.lupa
 {
     color: #f0f0f0;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 .image-not-found
 {
+    background-image: url('/img/not-found.png');
+    height: 512px;
+    width: 512px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.display-none{
     display: none;
 }
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }

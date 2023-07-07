@@ -1,22 +1,38 @@
-.container-card-acao
+.container-stocks
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+ 
+    gap: 1rem;
+    border-radius: 30px;
+
+    justify-content: center;
+}
+.container-card
 {
     display: flex;
-    width: auto;
+    width: 25%;
     padding: 0.5rem;
-    gap: 0.5rem;
+    gap: 0.8rem;
     text-align: center;
-    /* justify-content: center; */
+    justify-content: center;
+    align-items: center;
     background-color: #ffffff;
-    height: 10rem;
+    height: 200px;
     border-radius: 15px;
     margin: 0.8rem;
     box-shadow: 5px 3px 5px rgba(0 , 0, 0, 0.35);
+
 }
 .acao-logo
 {
     border-radius: 5px;
+    height: 60%;
+    width: 40%;
 }
-.container-card-text
+.card-text
 {
     display: flex;
     flex-direction: column;
@@ -24,7 +40,15 @@
 }
 .preco-acao
 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 2rem 0;
+
+}
+.acao-stock
+{
+    font-size: 1.25rem;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    font-weight: 700;
 
 }
