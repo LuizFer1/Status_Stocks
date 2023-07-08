@@ -1,3 +1,5 @@
+import { conectaApi } from "./Api.js"
+
 
 const button = document.querySelector('i')
     
@@ -15,53 +17,68 @@ button.addEventListener('click', (event) => {
     }
 })
 
+function criarCard(nome,img,papel,price){
+    return (
+        `<div class="container-card">
+            <img src="${img}" alt="${nome}" class="acao-logo">
+            
+            <div class="card-text">
+                <p class="acao-stock">
+                    ${papel}
+                </p>
+                <p class="acao-name">
+                    ${nome}
+                </p>
+                <p class="preco-acao">
+                R$ ${parseFloat(price).toFixed(2)}
+                </p>
+            </div>
+        </div>` 
+    )
+}
 
 async function searchingStocks(stock) {
-    const acaoAPI = await fetch(`https://brapi.dev/api/quote/${stock}%2C%5EBVSP?range=1d&interval=1d&fundamental=true&dividends=true`)
-    const acao = await acaoAPI.json()
+    const acao = await conectaApi.acaoEspecifica(stock)
 
-    console.log(toString(acao.status))
+    if(acao.results[0].error){
 
+        const container = document.getElementById('container-stock')
+        container.classList.add('display-none')
+        container.innerHTML = ""
+        
+        const errorImage = document.getElementById("image-not-found")
+        
+        errorImage.classList.remove('display-none')
+
+    }else{
+
+        const container = document.getElementById('container-stock')
+        container.classList.remove('display-none')
+        container.classList.add('container-stocks')
+
+        container.innerHTML = ""
+
+        container.innerHTML += criarCard()
+
+    }
     
-            
-    const errorImage = document.getElementById("image-not-found")
-
-    errorImage.classList.add('display-none')
-
-    const container = document.getElementById('container-stock')
-
-    container.classList.add('container-stocks')
-
-    container.innerHTML = ""
-
-    container.innerHTML += `<div class="container-card">
-                                <img src="${acao.results[0].logourl}" alt="${acao.results[0].longName}" class="acao-logo">
-                                
-                                <div class="card-text">
-                                    <p class="acao-stock">
-                                        ${acao.results[0].symbol}
-                                    </p>
-                                    <p class="acao-name">
-                                        ${acao.results[0].longName}
-                                    </p>
-                                    <p class="preco-acao">
-                                    R$ ${parseFloat(acao.results[0].regularMarketPrice).toFixed(2)}
-                                    </p>
-                                </div>
-                            </div>` 
-    
-    console.log(acao.results[0])
+    console.table(await acao.results)
 }
 
 async function listStocks(){
-    const acaoAPI = await fetch(`https://brapi.dev/api/quote/list?sortBy=volume&sortOrder=asc&limit=12`)
-    const acao = await acaoAPI.json()
+    const errorImage = document.getElementById("image-not-found")
+        
+    errorImage.classList.add('display-none')
+
+    const acao = await conectaApi.listaAcao()
+
     const container = document.getElementById('container-stock')
+
     container.innerHTML = ""
 
     container.classList.add('container-stocks')
 
-    console.table(acao.stocks)
+    console.table(acao.stocks) 
 
 
     acao.stocks.forEach(element => {
